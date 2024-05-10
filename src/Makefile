@@ -53,6 +53,9 @@ ENABLE_DOUBLE_VLAN = n
 ENABLE_PAGE_REUSE = n
 ENABLE_RX_PACKET_FRAGMENT = n
 
+# GCC 14 will report the following warning as an error and fail to compile. So we need to disable the warning.
+EXTRA_CFLAGS += -Wno-incompatible-pointer-types
+
 ifneq ($(KERNELRELEASE),)
 	obj-m := r8125.o
 	r8125-objs := r8125_n.o rtl_eeprom.o rtltool.o
